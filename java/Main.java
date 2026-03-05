@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 import com.packages.operations.*;
+import com.packages.arrays.*;
 
 public class Main
 {
@@ -28,7 +29,7 @@ public class Main
                     menuPersons();
                     break;
                 case "3":
-                    // System.out.println("Hasta pronto");
+                    menuVectors();
                     break;
                 default: 
                     System.out.println("Opción no válida");
@@ -120,6 +121,66 @@ public class Main
                     break;
                 case "1":
                     per.oldGroupPerson();
+                    break;
+                default: 
+                    System.out.println("Opción no válida");
+            }
+        } while (!option.equals("0"));
+    }
+    
+    
+    public static void menuVectors()
+    {
+        String option;
+        int datum, position;
+        Vector v = new Vector();
+        do {
+            System.out.println("\nMenú Vectores");
+            System.out.println("0. Regresar");
+            System.out.println("1. Agregar");
+            System.out.println("2. Tamaño");
+            System.out.println("3. Mostrar");
+            System.out.println("4. Buscar");
+            System.out.print("Ingrese su opción: ");
+            option = input.nextLine();
+
+            switch (option) {
+                case "0":
+                    break;
+                case "1":
+                    if (v.getN() < v.getT()) {
+                        System.out.print("Dato a agregar: ");
+                        datum = input.nextInt();
+                        input.nextLine();
+                        v.addVector(datum);
+                    } else {
+                        System.out.println("Vector lleno");
+                    }
+                    break;
+                case "2":
+                    System.out.println("Tamaño vector: " + v.getN());
+                    break;
+                case "3":
+                    if (v.getN() > 0) {
+                        v.showVector();
+                    } else {
+                        System.out.println("Vector vacío");
+                    }
+                    break;
+                case "4":
+                    if (v.getN() > 0) {
+                        System.out.print("Dato a buscar: ");
+                        datum = input.nextInt();
+                        input.nextLine();
+                        position = v.findVector(datum);
+                        if (position > -1) {
+                            System.out.println("Dato encontrado en posición " + position);
+                        } else {
+                            System.out.println("El dato " + datum + " no se encuentra en el vector");
+                        }
+                    } else {
+                        System.out.println("Vector vacío");
+                    }
                     break;
                 default: 
                     System.out.println("Opción no válida");
